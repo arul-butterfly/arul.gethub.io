@@ -1,92 +1,1000 @@
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Arul's Profile</title>
-        <meta name="description" content="Personal profile page of Arul">
-        <link rel="icon" href="./assets/image/icons8-butterfly-100.png" type="image/x-icon">
-        <link rel="stylesheet" href="styles.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ Welcome to SRMIST ✨</title>
+    <style>
+        html {
+    scroll-behavior: smooth;
+}
+
+        /* Making everything look nice and friendly */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* The top part of our website */
+        .hero {
+    min-height: 100vh;
+    background: url('./assets/image/WhatsApp\ Image\ 2025-01-16\ at\ 10.58.13\ AM.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    color:rgb(251, 251, 252);
+}
+
+
+        /* Moving bubbles in background */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-100px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* Menu at the top */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(11, 3, 3, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: rgb(246, 244, 244);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(109, 3, 3, 0.2);
+        }
+
+        /* Main content area */
+        .content {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .welcome-text {
+            font-size: 64px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Fun cards showing different things about SRMIST */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            width: 250px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        /* Interactive buttons */
+        .cta-button {
+            background: white;
+            color: #4a90e2;
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: none;
+            font-size: 18px;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* News ticker at the bottom */
+        .news-ticker {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            white-space: nowrap;
+        }
+
+        .ticker-content {
+            animation: ticker 20s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .map-container {
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.map-container h2 {
+    color: white;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+#srmMap {
+    height: 400px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+/* Style for the card links */
+.feature-card-link {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+/* Update feature card styles */
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+#map {
+        width: 100vw;
+        height: 100vh;
+    }
+
+
+    .stats-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 50px 20px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    margin: 50px auto;
+    max-width: 1200px;
+    border-radius: 15px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    min-width: 200px;
+    animation: fadeIn 1s ease-out;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 10px;
+    font-family: 'Arial', sans-serif;
+}
+
+.stat-label {
+    font-size: 18px;
+    color: white;
+    max-width: 150px;
+    margin: 0 auto;
+    line-height: 1.4;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.highlight {
+    color: #FFD700;
+}
+
+.placements-section {
+    padding: 50px 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    margin: 50px auto;
+    max-width: 1200px;
+    border-radius: 15px;
+}
+
+.placements-title {
+    color: #dc143c;  
+    font-size: 36px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.company-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.company-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.company-card:hover {
+    transform: translateY(-5px);
+}
+
+.company-logo {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+}
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: fixed; /* Changed to fixed */
+    top: 80px; /* Adjust based on your navbar height */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(15, 9, 9, 0.95);
+    backdrop-filter: blur(10px);
+    width: 90%; /* Changed from min-width */
+    max-width: 1200px; /* Added max-width */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    justify-content: space-between;
+    animation: fadeIn 0.3s ease;
+}
+
+.dropdown-column {
+    flex: 1;
+    padding: 10px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-column:last-child {
+    border-right: none;
+}
+
+.dropdown-column h3 {
+    color: #FFD700;
+    margin-bottom: 15px;
+    font-size: 18px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 0;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    color: #FFD700;
+    transform: translateX(5px);
+}
+
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid rgba(0, 0, 0, 0.9);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) translateX(-50%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateX(-50%);
+    }
+}
+
+@media (max-width: 1024px) {
+    .dropdown-content {
+        width: 95%;
+        max-height: 80vh; /* Limit height on mobile */
+        overflow-y: auto; /* Allow scrolling */
+        top: 70px;
+    }
     
-    
-     
+    .dropdown-column {
+        padding: 15px;
+        width: 100%;
+    }
+}
+
+/* Add smooth scrollbar for dropdown */
+.dropdown-content {
+    scrollbar-width: thin;
+    scrollbar-color: #FFD700 rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+    background: rgba(244, 242, 242, 0.944);
+    border-radius: 4px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+    background-color: #dfc013;
+    border-radius: 4px;w
+}
+.dropdown-container {
+            width: 300px;
+            margin: 20px auto;
+        }
+        .dropdown-btn {
+            width: 100%;
+            background-color: #175796;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            text-align: left;
+        }
+        .dropdown-content {
+            width: 100%;
+            background-color: #0a1416;
+            border: 1px solid #bdc3c7;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: #34495e;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .dropdown-content a:hover {
+            background-color: #010405;
+            color: rgb(14, 5, 5);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-btn {
+            width: 100%;
+            background-color: #175796;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            text-align: left;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #cd1717;
+            min-width: 300px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: flex;
+        }
+        .dropdown-column {
+            flex: 1;
+            padding: 10px;
+        }
+        .dropdown-column h3 {
+            border-bottom: 2px solid #1a5f7a;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+        .dropdown-column ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .dropdown-column ul li {
+            padding: 5px 0;
+            cursor: pointer;
+        }
+        .dropdown-column ul li:hover {
+            color: #1a5f7a;
+            text-decoration: underline;
+        }
+
+
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBiFk2te6RTsZjn6xWciB61Gqjr0ml-dQ"></script>
+    <link rel="icon" href="./assets/image/icons8-butterfly-100.png" type="image/x-icon">
+</head>
 <body>
-    <center>
-    <header><hr>
-        <h1>WELCOME TO MY PROFILE</h1>
-        <p>This is Arul, b.tech AI student From SRM Uniersity.I Am welcoming You to See My Profile
-        </p>
-    </header>
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#">my skills</a>
-                <ul class="dropdown">
-                    <li><a href="#">web Developer</a></li>
-                    <li><a href="#">prompt engineer</a></li>
-                    <li><a href="#">python using ai tools</a></li>
-                </ul>
-            </li>
-            <li><a href="#">portfoli</a>
-                <ul class="dropdown">
-                    <li><a href="#">project 1</a></li>
+    <centre>
+    <div class="hero">
+        <!-- Adding fun floating bubbles -->
+        <div id="bubbles"></div>
 
-                </ul>
-    </nav>
-
-    <section><hr>
-        <h1>About Me</h1>
-        <p>Hello I Am Arul ,And Here Little Info About Me</p>
-        <img src="./assets/image/WhatsApp Image 2024-12-30 at 12.51.56 PM.jpeg" alt="arul pic" width="300" >
-    </section>
-    <section><hr>
-        <h2>contact information</h2>
-        <p> let's connect!</p>
-        <p><a href=" https://chat.whatsapp.com/Eslo5tFXhLgH2nPIqxFPwC">whatsapp</a></p> <a href="https://www.linkedin.com/in/arul-yogeshwaran-783854342">linked.in</a></p>
-
-
-        
-    </section>
-
-    <section><hr>
-        <h2>My Skills</h2>
-        <table align="center">
-            <tr>
-                <td>
-                    <ul style=""text-align:right;>
-                        <li>Web Developer</li>
-                        <li>Prompt Engineer</li>
-                        <li>Python Using AI Tools</li>
+        <!-- Top menu -->
+        <nav class="nav">
+            <div class="logo">🎓 SRMIST</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <nav>
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#about">About Us</a>
+                            <div class="dropdown-content">
+                                <div class="dropdown-column">
+                                    <h3>SRM In Focus</h3>
+                                    <ul>
+                                        <li>Overview</li>
+                                        <li>History</li>
+                                        <li>Accreditations & Rankings</li>
+                                        <li>QS Ratings</li>
+                                        <li>Awards & Recognition</li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h3>Organisation</h3>
+                                    <ul>
+                                        <li>Alumni Affairs</li>
+                                        <li>Communications</li>
+                                        <li>Controller Of Examinations</li>
+                                        <li>Career Centre</li>
+                                        <li>Campus Life</li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h3>Admissions</h3>
+                                    <ul>
+                                        <li>Directorate Of Online And Distance Education</li>
+                                        <li>International Relations</li>
+                                        <li>Internal Quality Assurance Cell</li>
+                                        <li>Research</li>
+                                        <li>Student Affairs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
-                </td>
-            </tr>
-        </table>
+                </nav>
+            
+              
+                <a href="#courses">Courses</a>
+                <div class="dropdown">
+                    <button class="dropdown-btn">Campuses </button>
+                    <div class="dropdown-content">
+                        <a href="#">Kattankulathur – Chennai</a>
+                        <a href="#">Ramapuram – Chennai</a>
+                        <a href="#">Vadapalani – Chennai</a>
+                        <a href="#">Tiruchirappalli</a>
+                        <a href="#">Delhi – NCR</a>
+                        <a href="#">Babuyanpettai – Chengalpattu</a>
+                    </div>
+                </div>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
 
-    </section>
-    <section><hr>
-        <h2>portfolio</h2>
-        <p>take a look at my portfolio </p>
-        <p><a href=https://www.linkedin.com/in/arul-yogeshwaran-783854342>project1</a></p>
-    </section><hr>
-    <section>
-        <h2>contect me</h2>
-        <form>
-            <label for="name">name:</label>
-            <input type="text" id="name" name="name"><br><br>
+        <!-- Main content -->
+        <div class="content">
+            <h1 class="welcome-text">Welcome to SRMIST! 🌟</h1>
+            <p style="font-size: 24px;">Where Dreams Take Flight ✈️</p>
 
-            <label for="email" >email:</label>
-            <input type="email" id="email" name="email"><br><br>
+            <div class="features">
+                <a href="virtual-tour.html" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Virtual Campus Tour</h3>
+                        <p>Take an interactive tour of our beautiful campus!</p>
+                    </div>
+                </a>
+            
+                <!-- Teachers Card -->
+                <a href="#" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon">👩‍🏫</div>
+                        <h3>meet our teachers!</h3>
+                        <p>Find your favorite teacher!</p>
+                    </div>
+                </a>
+            
+                <!-- Global Campus Card -->
+                <a href="global-campus.html" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3>Global Campus</h3>
+                        <p>Meet friends from everywhere!</p>
+                    </div>
+                </a>
+            
+                <!-- Fun Activities Card -->
+                <a href="srm-activities.html" class="feature-card-link">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎮</div>
+                        <h3>Fun Activities</h3>
+                        <p>Join exciting campus events!</p>
+                    </div>
+                </a>
+            </div>
+            
 
-            <label for="message">message:</label>
-            <textarea id="message" name="message"></textarea>
+            <button class="cta-button" onclick="showWelcome()">Start Your Journey! 🚀</button>
 
-            <button type="submit">send message</buttton>
-        </form>
-    </section><hr>
-    </center>
+            <div class="image-grid">
+                <!-- Sports Section -->
+                <div class="grid-item large-item sports">
+                    <h2>Sports</h2>
+                    <p>Experience athletics excellence at SRM</p>
+                </div>
+            
+                <!-- Student Life Section -->
+                <div class="grid-item medium-item student-life">
+                    <h2>Student Life</h2>
+                    <p>Vibrant campus community</p>
+                </div>
+            
+                <!-- Cultural Events Section -->
+                <div class="grid-item medium-item cultural">
+                    <h2>Cultural Events</h2>
+                    <p>Celebrate diversity and talent</p>
+                </div>
+            
+                <!-- Milan Section -->
+                <div class="grid-item medium-item milan">
+                    <h2>Milan</h2>
+                    <p>Annual cultural extravaganza</p>
+                </div>
+            </div>
+            
+            <!-- Quick Info Section -->
+            <div class="quick-info">
+                <div class="info-box">
+                    <h3>Admissions</h3>
+                    <p>Begin your journey at SRM</p>
+                    <a href="#learn-more" class="info-button">Learn More</a>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Research</h3>
+                    <p>Innovate and discover</p>
+                    <a href="#research" class="info-button">Explore</a>
+                </div>
+                
+                <div class="info-box">
+                    <h3>Campus Life</h3>
+                    <p>Experience the SRM lifestyle</p>
+                    <a href="#campus" class="info-button">Discover</a>
+                </div>
+            </div>
+            
+            <!-- Style for the new sections -->
+            <style>
+            /* Image Grid Layout */
+            .image-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                padding: 40px 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            .grid-item {
+                position: relative;
+                border-radius: 15px;
+                overflow: hidden;
+                color: white;
+                padding: 30px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                transition: transform 0.3s;
+                min-height: 300px;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .grid-item:hover {
+                transform: scale(1.02);
+            }
+            
+            .large-item {
+                grid-column: span 2;
+                min-height: 400px;
+            }
+            
+            /* Background images for each section */
+            .sports {
+                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./assets/image/Screenshot\ 2025-01-18\ 194952.png');
+            }
+            
+            .student-life {
+                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./assets/image/Screenshot\ 2025-01-23\ 174846.png');
+            }
+            
+            .cultural {
+                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./assets/image/Screenshot\ 2025-01-18\ 195836.png');
+            }
+            
+            .milan {
+                background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./assets/image/Screenshot\ 2025-01-18\ 200107.png');
+            }
+            
+            .grid-item h2 {
+                font-size: 2.5rem;
+                margin-bottom: 10px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            
+            .grid-item p {
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            }
+            
+            /* Quick Info Section */
+            .quick-info {
+                display: flex;
+                justify-content: space-around;
+                padding: 40px 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+                gap: 20px;
+            }
+            
+            .info-box {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 30px;
+                border-radius: 15px;
+                text-align: center;
+                flex: 1;
+                max-width: 300px;
+                transition: transform 0.3s;
+            }
+            
+            .info-box:hover {
+                transform: translateY(-5px);
+            }
+            
+            .info-box h3 {
+                font-size: 1.5rem;
+                margin-bottom: 15px;
+                color: white;
+            }
+            
+            .info-box p {
+                color: white;
+                margin-bottom: 20px;
+            }
+            
+            .info-button {
+                display: inline-block;
+                padding: 10px 25px;
+                background: #FFD700;
+                color: black;
+                text-decoration: none;
+                border-radius: 25px;
+                font-weight: bold;
+                transition: transform 0.3s;
+            }
+            
+            .info-button:hover {
+                transform: scale(1.1);
+            }
+            
+            /* Responsive Design */
+            @media (max-width: 768px) {
+                .image-grid {
+                    grid-template-columns: 1fr;
+                }
+                
+                .large-item {
+                    grid-column: span 1;
+                }
+                
+                .quick-info {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                
+                .info-box {
+                    width: 100%;
+                    max-width: none;
+                }
+            }
+            </style>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-number" id="ctcHighest">0</div>
+                    <div class="stat-label">Lakh P.A.<br>Highest CTC</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number" id="ctcAverage">0</div>
+                    <div class="stat-label">Lakh P.A.<br>Average CTC</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number" id="feeWaiver">0</div>
+                    <div class="stat-label">Fee Waiver<br>For Top Rankers</div>
+                </div>
+                
+                <div class="stat-box">
+                    <div class="stat-number" id="placement">0</div>
+                    <div class="stat-label">Students<br>Placed in 2024</div>
+                </div>
+            </div>
+
+            <div class="placements-section">
+                <h2 class="placements-title">Placements</h2>
+                <div class="company-grid">
+                    <!-- Company 1: Amazon -->
+                    <div class="company-card">
+                        <img src="./assets/image/Screenshot 2025-01-16 193135.png" alt="Amazon" class="company-logo">
+                    </div>
+                    <!-- Company 2: Google -->
+                    <div class="company-card">
+                        <img src="./assets/image/Screenshot 2025-01-16 192534.png" alt="Google" class="company-logo">
+                    </div>
+                    <!-- Company 3: Arista -->
+                    <div class="company-card">
+                        <img src="./assets/image/Screenshot 2025-01-16 193822.png" alt="TCS" class="company-logo">
+                    </div>
+                    <!-- Company 4: Microsoft -->
+                    <div class="company-card">
+                        <img src="./assets/image/Screenshot 2025-01-16 193419.png" alt="Microsoft" class="company-logo">
+                    </div>
+                    <!-- Company 5: IBM -->
+                    <div class="company-card">
+                        <img src="./assets/image/Screenshot 2025-01-16 194134.png" alt="IBM" class="company-logo">
+                    </div>
+                    <!-- Company 6: Infosys -->
+                    <div class="company-card">
+                        <img src="./assets/image/Screenshot 2025-01-16 193601.png" alt="Infosys" class="company-logo">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add this section after your stats-container div and before the news-ticker -->
+<div class="campus-life-section">
+    <!-- All the content inside -->
+</div>
+
+            
+
+        <!-- Moving news at the bottom -->
+        <div class="news-ticker">
+            <div class="ticker-content">
+                📚 New courses starting soon! | 🏆 SRMIST ranked #1 in innovation | 🎭 Cultural fest next month | 
+                🎓 Graduation ceremony dates announced | 🏅 Sports meet registration open
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adding floating bubbles
+        function createBubbles() {
+            const bubbles = document.getElementById('bubbles');
+            for(let i = 0; i < 20; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.width = Math.random() * 100 + 'px';
+                bubble.style.height = bubble.style.width;
+                bubble.style.left = Math.random() * 100 + 'vw';
+                bubble.style.animationDelay = Math.random() * 8 + 's';
+                bubbles.appendChild(bubble);
+            }
+        }
     
+        // Fun welcome message
+        function showWelcome() {
+            alert("🎉 Welcome to SRMIST! Let's start an amazing journey together! 🌟");
+        }
     
-    <script src="script.js"></script>
+        function initMap() {
+            // SRM University Chennai location
+            const srmLocation = {
+                lat: 12.8237,
+                lng: 80.0454
+            };
+    
+            // Create the map
+            const map = new google.maps.Map(document.getElementById('srmMap'), {
+                zoom: 15,
+                center: srmLocation,
+                mapTypeId: 'hybrid'   // This makes it show satellite view!
+            });
+    
+            // Add a marker (like putting a pin on the map)
+            const marker = new google.maps.Marker({
+                position: srmLocation,
+                map: map,
+                title: 'SRM University Chennai',
+                animation: google.maps.Animation.DROP
+            });
+    
+            // Add an info window (like a popup message)
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 10px;">
+                        <h3 style="color: #4a90e2;">SRM University Chennai</h3>
+                        <p>SRM Nagar, Kattankulathur,<br>
+                        Chengalpattu District - 603203<br>
+                        Tamil Nadu, India</p>
+                        <p><a href="https://www.srmist.edu.in" target="_blank">Visit Website</a></p>
+                    </div>
+                `
+            });
+    
+            // Show info when clicking the marker
+            marker.addListener('click', () => {
+                infoWindow.open(map, marker);
+            });
+        }
+    
+        // Start everything when page loads
+        window.onload = function() {
+            createBubbles();
+            initMap();  // This starts our map!
+        };
+        function openGlobalCampusMap() {
+    // Open your new custom map page
+    window.open('global-campus.html', '_blank');
+}
 
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        let value = Math.floor(progress * (end - start) + start);
+        
+        // Add appropriate suffix
+        if (obj.id === "feeWaiver" || obj.id === "placement") {
+            obj.innerHTML = value + "%";
+        } else {
+            obj.innerHTML = value.toFixed(2);
+        }
+        
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Function to check if element is in viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Function to start animations when stats section is in view
+let animated = false;
+function handleScroll() {
+    const statsContainer = document.querySelector('.stats-container');
+    if (isInViewport(statsContainer) && !animated) {
+        animateValue(document.getElementById("ctcHighest"), 0, 57, 2000);
+        animateValue(document.getElementById("ctcAverage"), 0, 7.19, 2000);
+        animateValue(document.getElementById("feeWaiver"), 0, 100, 2000);
+        animateValue(document.getElementById("placement"), 0, 92, 2000);
+        animated = true;
+    }
+}
+
+// Add scroll event listener
+window.addEventListener('scroll', handleScroll);
+
+function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            section.classList.toggle('active');
+        }
+
+    
+
+    </script>
+   
 </body>
 </html>
+   

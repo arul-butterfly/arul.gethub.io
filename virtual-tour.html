@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Virtual Tour 🎓</title>
+    <style>
+        
+        /* Making everything pretty! */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(45deg, #4a90e2, #7c4dff);
+            color: white;
+        }
+
+        /* Big welcome section */
+        .tour-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .tour-title {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        /* Making title bounce! */
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Container for all tour spots */
+        .tour-spots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        /* Each tour location card */
+        .tour-spot {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .tour-spot:hover {
+            transform: scale(1.05);
+        }
+
+        /* Image containers */
+        .spot-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            background: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        /* Tour navigation */
+        .tour-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            border-radius: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-button {
+            background: white;
+            color: #4a90e2;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Pop-up view */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            color: white;
+        }
+
+        .popup-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="tour-header">
+        <h1 class="tour-title">🏛️ Welcome to SRM Virtual Tour! 🎓</h1>
+        <p>Explore our beautiful campus from anywhere in the world!</p>
+    </div>
+
+    <div class="tour-spots">
+        <!-- Main Building -->
+        <div class="tour-spot" onclick="showSpotDetails('main')">
+            <div class="spot-image">🏛️</div>
+            <h2>Main Building</h2>
+            <p>Our iconic central building with state-of-the-art facilities</p>
+        </div>
+
+        <!-- Library -->
+        <div class="tour-spot" onclick="showSpotDetails('library')">
+            <div class="spot-image">📚</div>
+            <h2>Central Library</h2>
+            <p>A treasure trove of knowledge with over 100,000 books</p>
+        </div>
+
+        <!-- Sports Complex -->
+        <div class="tour-spot" onclick="showSpotDetails('sports')">
+            <div class="spot-image">🏃‍♂️</div>
+            <h2>Sports Complex</h2>
+            <p>World-class facilities for all your sporting needs</p>
+        </div>
+
+        <!-- Tech Park -->
+        <div class="tour-spot" onclick="showSpotDetails('tech')">
+            <div class="spot-image">💻</div>
+            <h2>Tech Park</h2>
+            <p>Where innovation meets excellence</p>
+        </div>
+    </div>
+
+    <!-- Tour Navigation -->
+    <div class="tour-nav">
+        <button class="nav-button" onclick="prevSpot()">⬅️ Previous</button>
+        <button class="nav-button" onclick="nextSpot()">Next ➡️</button>
+    </div>
+
+    <!-- Pop-up View -->
+    <div id="spotPopup" class="popup">
+        <button class="close-button" onclick="closePopup()">✖️</button>
+        <div class="popup-content">
+            <h2 id="popupTitle">Location Name</h2>
+            <div id="popupDetails">Details will go here</div>
+        </div>
+    </div>
+
+    <script>
+        // Tour spot details
+        const spots = {
+            main: {
+                title: "Main Building",
+                details: "Our magnificent main building houses administrative offices, classrooms, and labs. Built with modern architecture, it's the heart of our campus!"
+            },
+            library: {
+                title: "Central Library",
+                details: "A quiet haven for learning with digital resources, study rooms, and a vast collection of books across all disciplines."
+            },
+            sports: {
+                title: "Sports Complex",
+                details: "Features indoor and outdoor facilities including cricket ground, swimming pool, basketball courts, and more!"
+            },
+            tech: {
+                title: "Tech Park",
+                details: "Home to our research centers, innovation labs, and startup incubation center. Where future tech leaders are born!"
+            }
+        };
+
+        // Show spot details in popup
+        function showSpotDetails(spotId) {
+            const popup = document.getElementById('spotPopup');
+            const title = document.getElementById('popupTitle');
+            const details = document.getElementById('popupDetails');
+
+            title.textContent = spots[spotId].title;
+            details.textContent = spots[spotId].details;
+            popup.style.display = 'block';
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('spotPopup').style.display = 'none';
+        }
+
+        // Navigation functions
+        let currentSpotIndex = 0;
+        const spotKeys = Object.keys(spots);
+
+        function nextSpot() {
+            currentSpotIndex = (currentSpotIndex + 1) % spotKeys.length;
+            showSpotDetails(spotKeys[currentSpotIndex]);
+        }
+
+        function prevSpot() {
+            currentSpotIndex = (currentSpotIndex - 1 + spotKeys.length) % spotKeys.length;
+            showSpotDetails(spotKeys[currentSpotIndex]);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRM Campus Activities! 🎭</title>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(45deg, #4a90e2, #7c4dff);
+            color: white;
+        }
+
+        .activities-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            transform: translateY(0);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .activity-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .activity-icon {
+            font-size: 40px;
+            margin-right: 20px;
+        }
+
+        .activity-title {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .activity-content {
+            display: none;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .registration-form {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            margin-top: 5px;
+        }
+
+        button {
+            background: white;
+            color: #4a90e2;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .clue-box {
+            background: rgba(255, 255, 255, 0.9);
+            color: #4a90e2;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+     <link rel="icon" href="./assets/image/icons8-xbox-controller-100.png" type="image/x-icon">
+</head>
+<body>
+    <div class="activities-container">
+        <div class="header">
+            <h1>🌟 SRM Campus Activities 🌟</h1>
+            <p>Join the fun and make unforgettable memories!</p>
+        </div>
+
+        <!-- Treasure Hunt Card -->
+        <div class="activity-card" onclick="toggleActivity('treasureHunt')">
+            <div class="activity-header">
+                <div class="activity-icon">🗺️</div>
+                <h2 class="activity-title">Campus Treasure Hunt</h2>
+            </div>
+            <div id="treasureHunt" class="activity-content">
+                <h3>🏃‍♂️ Explore SRM Like Never Before!</h3>
+                <p>Join our exciting treasure hunt around campus! Solve riddles, find clues, and discover amazing spots!</p>
+                <ul>
+                    <li>Form teams of 4-5 students</li>
+                    <li>Solve campus-themed riddles</li>
+                    <li>Win exciting prizes!</li>
+                </ul>
+                <button onclick="showClue(event)">Get Sample Clue!</button>
+                <div id="clueBox" class="clue-box">
+                    "Where knowledge flows like a digital stream,
+                    And silence helps your dreams take wing,
+                    Books and bytes in perfect harmony,
+                    Find me where students come to think!"
+                    (Answer: University Central Library) 📚
+                </div>
+                <button onclick="showRegistration(event, 'treasureHuntForm')">Register Your Team</button>
+                <div id="treasureHuntForm" class="registration-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Team Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Team Leader Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Contact Number">
+                    </div>
+                    <button onclick="submitForm(event)">Submit Entry</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hackathon Card -->
+        <div class="activity-card" onclick="toggleActivity('hackathon')">
+            <div class="activity-header">
+                <div class="activity-icon">💻</div>
+                <h2 class="activity-title">SRM Tech Hackathon</h2>
+            </div>
+            <div id="hackathon" class="activity-content">
+                <h3>🚀 Code for Change!</h3>
+                <p>24 hours of coding, creativity, and innovation! Build solutions for real campus challenges.</p>
+                <ul>
+                    <li>Theme: Smart Campus Solutions</li>
+                    <li>Duration: 24 Hours</li>
+                    <li>Amazing prizes worth ₹50,000!</li>
+                </ul>
+                <button onclick="showRegistration(event, 'hackathonForm')">Register Now</button>
+                <div id="hackathonForm" class="registration-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Team Name">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Project Idea (briefly explain)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option value="">Select Your Track</option>
+                            <option value="web">Web Development</option>
+                            <option value="ai">AI/ML</option>
+                            <option value="iot">IoT</option>
+                        </select>
+                    </div>
+                    <button onclick="submitForm(event)">Submit Entry</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Talent Show Card -->
+        <div class="activity-card" onclick="toggleActivity('talentShow')">
+            <div class="activity-header">
+                <div class="activity-icon">🎭</div>
+                <h2 class="activity-title">SRM's Got Talent</h2>
+            </div>
+            <div id="talentShow" class="activity-content">
+                <h3>✨ Showcase Your Talent!</h3>
+                <p>Your moment to shine is here! Show the world what you've got in our grand talent show.</p>
+                <ul>
+                    <li>Multiple categories: Dance, Music, Comedy, Poetry</li>
+                    <li>Professional judging panel</li>
+                    <li>Perform on our grand stage!</li>
+                </ul>
+                <button onclick="showRegistration(event, 'talentForm')">Register to Perform</button>
+                <div id="talentForm" class="registration-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option value="">Select Performance Category</option>
+                            <option value="dance">Dance</option>
+                            <option value="music">Music</option>
+                            <option value="comedy">Stand-up Comedy</option>
+                            <option value="poetry">Poetry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Brief description of your performance"></textarea>
+                    </div>
+                    <button onclick="submitForm(event)">Submit Entry</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleActivity(id) {
+            const content = document.getElementById(id);
+            const allContent = document.querySelectorAll('.activity-content');
+            
+            allContent.forEach(item => {
+                if (item.id !== id) {
+                    item.style.display = 'none';
+                }
+            });
+            
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function showClue(event) {
+            event.stopPropagation();
+            const clueBox = document.getElementById('clueBox');
+            clueBox.style.display = clueBox.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function showRegistration(event, formId) {
+            event.stopPropagation();
+            const form = document.getElementById(formId);
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function submitForm(event) {
+            event.stopPropagation();
+            alert('Thank you for registering! We will contact you soon with more details! 🎉');
+        }
+    </script>
+</body>
+</html>

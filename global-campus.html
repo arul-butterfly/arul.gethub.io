@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Campus</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBiFk2te6RTsZjn6xWciB61Gqjr0ml-dQ"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+     <link rel="icon" href="./assets/image/icons8-globe-100.png" type="image/x-icon">
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            const srmLocation = { lat: 12.8237, lng: 80.0454 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: srmLocation,
+                mapTypeId: "hybrid",
+            });
+            const marker = new google.maps.Marker({
+                position: srmLocation,
+                map: map,
+                title: "SRM University Chennai",
+            });
+        }
+        window.onload = initMap;
+    </script>
+</body>
+</html>
